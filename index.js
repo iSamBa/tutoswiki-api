@@ -17,8 +17,17 @@ import postsService from "./src/use-cases/index.js";
 // //     console.log(res);
 // // }).catch(err => console.log(err))
 
-await postsService.addUser({
-    userName: "SuperMan"
+const user = await postsService.addUser({
+    userName: "SuperMan",
+    firstName: "Super",
+    lastName: "Man",
+    email: "super.man@123.com"
+})
+
+await postsService.addPost({
+    author_id: user._id,
+    title: "Post titleeeee",
+    content: " POST CONTENNNNTTTTTT ",
 })
 
 

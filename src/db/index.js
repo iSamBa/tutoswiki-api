@@ -1,17 +1,17 @@
 import mongoose from 'mongoose';
-import makePostsDb from "./posts-db.js"
-import makeUsersDb from "./users-db.js"
+import makePostsDb from "./posts/posts-db.js"
+import makeUsersDb from "./users/users-db.js"
 
 mongoose.connect("mongodb://localhost:27017/postsDb", { useNewUrlParser: true, useUnifiedTopology: true });
 
 const postSchema = new mongoose.Schema({
     // add user_id
     _id: String,
-    author: String,
+    author_id: String,
     title: String,
     content: String,
-    createdAt: String,
-    updatedAt: String,
+    createdAt: Date,
+    updatedAt: Date,
     published: Boolean,
 });
 
@@ -21,7 +21,9 @@ const userSchema = new mongoose.Schema({
     userName: String,
     firstName: String,
     lastName: String,
-    email: String
+    email: String,
+    createdAt: Date,
+    updatedAt: Date
 
 })
 

@@ -3,7 +3,7 @@ export default function buildMakePost({ Id }) {
         id = Id.createId(),
         createdAt = Date.now(),
         updatedAt = Date.now(),
-        author,
+        author_id,
         title,
         content,
         published = false
@@ -11,11 +11,11 @@ export default function buildMakePost({ Id }) {
     } = {}) {
 
         if (!Id.isValid(id)) {
-            throw new Error("Id is not valid");
+            throw new Error("Post Id is not valid");
         }
 
-        if (author.length < 2) {
-            throw new Error("Author name must contain at least one character");
+        if (!Id.isValid(author_id)) {
+            throw new Error("Author Id is not valid");
         }
 
         if (!title || title.length < 6) {
@@ -28,7 +28,7 @@ export default function buildMakePost({ Id }) {
 
         return Object.freeze({
             getPostId: () => id,
-            getAuthor: () => author,
+            getAuthorId: () => author_id,
             getTitle: () => title,
             getContent: () => content,
             getPostCreatedAt: () => createdAt,
