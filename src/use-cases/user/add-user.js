@@ -7,7 +7,7 @@ export default function makeAddUser({ usersDb }) {
             _id: user.getUserId(),
             userName: user.getUserName(),
             firstName: user.getFirstName(),
-            lastaName: user.getLastName(),
+            lastName: user.getLastName(),
             email: user.getEmail(),
             createdAt: user.getUserCreatedAt(),
             updatedAt: user.getUserUpdatedAt()

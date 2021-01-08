@@ -1,11 +1,21 @@
 import mongoose from 'mongoose';
+import dotenv from "dotenv";
 import makePostsDb from "./posts/posts-db.js"
 import makeUsersDb from "./users/users-db.js"
 
-mongoose.connect("mongodb://localhost:27017/postsDb", { useNewUrlParser: true, useUnifiedTopology: true });
+dotenv.config();
+
+mongoose.connect(process.env.LOCAL_DATA_BASE_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false,
+});
+
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', () => { console.log("Connected to the DB"); });
 
 const postSchema = new mongoose.Schema({
-    // add user_id
     _id: String,
     author_id: String,
     title: String,
@@ -13,7 +23,7 @@ const postSchema = new mongoose.Schema({
     createdAt: Date,
     updatedAt: Date,
     published: Boolean,
-});
+}, { _id: false });
 
 
 const userSchema = new mongoose.Schema({

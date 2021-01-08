@@ -8,8 +8,7 @@ export default function makeUsersDb({ userModel }) {
     })
 
     async function insert(userInfo) {
-        const userInstance = userModel(userInfo);
+        const userInstance = new userModel(userInfo);
         return await userInstance.save();
-
     }
 }
