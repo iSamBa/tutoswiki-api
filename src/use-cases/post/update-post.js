@@ -2,6 +2,7 @@ import makePost from "../../entities/post/index.js"
 
 export default function makeUpdatePost({ postsDb }) {
     return async function updatePost({ id, ...inputData }) {
+
         if (!id) {
             throw new Error('You must supply an id.')
         }

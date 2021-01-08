@@ -1,21 +1,23 @@
 import makeAddPost from "./add-post.js"
 import makeDeletePost from "./delete-post.js"
 import makeListPosts from "./list-posts.js"
-import makeGetPostById from "./get-post.js"
+import makeGetPost from "./get-post.js"
+import makeUpdatePost from "./update-post.js"
 import { postsDb } from "../../db/index.js"
 
 const addPost = makeAddPost({ postsDb })
 const deletePost = makeDeletePost({ postsDb })
 const listPosts = makeListPosts({ postsDb })
-const getPostById = makeGetPostById({ postsDb })
-
+const getPostById = makeGetPost({ postsDb })
+const updatePost = makeUpdatePost({ postsDb })
 
 const postsService = Object.freeze({
     addPost,
     deletePost,
     getPostById,
     listPosts,
+    updatePost
 });
 
 export default postsService;
-export { addPost, listPosts, getPostById, deletePost }
+export { addPost, listPosts, getPostById, deletePost, updatePost }

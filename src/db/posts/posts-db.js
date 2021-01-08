@@ -4,7 +4,7 @@ export default function makePostsDb({ postModel }) {
         findById,
         insert,
         remove,
-        // update
+        update
     })
 
     async function findAll({ publishedOnly = true } = {}) {
@@ -24,7 +24,11 @@ export default function makePostsDb({ postModel }) {
 
     async function remove(id) {
         const query = { _id: id }
-        console.log(query);
         return await postModel.deleteOne(query);
+    }
+
+    async function update(id, { ...newData }) {
+        const query = { _id: id }
+        return await postModel.update(query, { ...newData })
     }
 }

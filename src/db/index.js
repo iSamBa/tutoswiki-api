@@ -23,7 +23,7 @@ const postSchema = new mongoose.Schema({
     createdAt: Date,
     updatedAt: Date,
     published: Boolean,
-}, { _id: false });
+});
 
 
 const userSchema = new mongoose.Schema({
