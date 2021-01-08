@@ -29,6 +29,6 @@ export default function makePostsDb({ postModel }) {
 
     async function update(id, { ...newData }) {
         const query = { _id: id }
-        return await postModel.update(query, { ...newData })
+        return await postModel.findOneAndUpdate(query, { ...newData })
     }
 }

@@ -15,12 +15,12 @@ import usersService from "./src/use-cases/user/index.js";
 // })
 
 
-// await postsService.updatePost({
-//     id: "48149b9d-db06-4c96-b8a6-71bfcbe2615f",
-//     title: "Tiltle --UPDATED--"
-// })
-
-await usersService.updateUser({
-    id: "3b4820dd-4233-426e-bb25-5d6c81918ab2",
-    firstName: "HelloThere2"
+await postsService.updatePost({
+    id: "1b56ea6e-0e78-4b6d-964a-930cdda77aa3",
+    title: "Tiltle --UPDATED--"
 })
+
+// await usersService.updateUser({
+//     id: "3b4820dd-4233-426e-bb25-5d6c81918ab2",
+//     firstName: "HelloThere2"
+// })
