@@ -8,16 +8,16 @@ import { postsDb } from "../../db/index.js"
 const addPost = makeAddPost({ postsDb })
 const deletePost = makeDeletePost({ postsDb })
 const listPosts = makeListPosts({ postsDb })
-const getPostById = makeGetPost({ postsDb })
+const getPost = makeGetPost({ postsDb })
 const updatePost = makeUpdatePost({ postsDb })
 
 const postsService = Object.freeze({
     addPost,
     deletePost,
-    getPostById,
+    getPost,
     listPosts,
     updatePost
 });
 
 export default postsService;
-export { addPost, listPosts, getPostById, deletePost, updatePost }
+export { addPost, listPosts, getPost, deletePost, updatePost }
