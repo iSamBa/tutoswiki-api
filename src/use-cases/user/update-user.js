@@ -13,7 +13,7 @@ export default function makeUpdateUser({ usersDb }) {
         }
         const newUser = makeUser({ ...userToUpdate._doc, ...inputData });
 
-        usersDb.update(id, {
+        return usersDb.update(id, {
             firstName: newUser.getFirstName(),
             lastName: newUser.getLastName(),
             userName: newUser.getUserName(),

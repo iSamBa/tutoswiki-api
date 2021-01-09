@@ -1,14 +1,14 @@
-export default function makeGetPostController({ getPost }) {
-    return async function getPostController(httpRequest) {
+export default function makeCreateUserController({ addUser }) {
+    return async function addUserController(httpRequest) {
         const headers = {
             'Content-Type': 'application/json'
         }
         try {
-            const retrieved = await getPost(httpRequest.params.id);
+            const addedUser = await addUser(httpRequest.body);
             return {
                 headers,
-                statusCode: 200,
-                body: { retrieved }
+                statusCode: 201,
+                body: { addedUser }
             }
 
         } catch (error) {

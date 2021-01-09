@@ -1,14 +1,14 @@
-export default function makeCreatePostController({ addPostUseCase }) {
-    return async function createPost(httpRequest) {
+export default function makeAddPostController({ addPost }) {
+    return async function addPostController(httpRequest) {
         const headers = {
             'Content-Type': 'application/json'
         }
         try {
-            const addedPost = await addPostUseCase(httpRequest.body);
+            const added = await addPost(httpRequest.body);
             return {
                 headers,
                 statusCode: 201,
-                body: { addedPost }
+                body: { added }
             }
 
         } catch (error) {

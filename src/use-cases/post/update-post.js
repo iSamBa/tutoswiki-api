@@ -14,7 +14,7 @@ export default function makeUpdatePost({ postsDb }) {
         }
         const newPost = makePost({ ...postToUpdate._doc, ...inputData });
 
-        postsDb.update(id, {
+        return postsDb.update(id, {
             title: newPost.getTitle(),
             content: newPost.getContent(),
             updatedAt: Date.now()

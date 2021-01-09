@@ -28,6 +28,8 @@ export default function makeUsersDb({ userModel }) {
 
     async function update(id, { ...newData }) {
         const query = { _id: id }
-        return await userModel.findOneAndUpdate(query, { ...newData })
+        return await userModel.findOneAndUpdate(query, { ...newData }, {
+            returnOriginal: false
+        })
     }
 }

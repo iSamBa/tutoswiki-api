@@ -7,9 +7,8 @@ export default function makePostsDb({ postModel }) {
         update
     })
 
-    async function findAll({ publishedOnly = true } = {}) {
-        const query = publishedOnly ? { published: true } : {}
-        return await postModel.find(query);
+    async function findAll() {
+        return await postModel.find({});
     }
 
     async function insert(postInfo) {
@@ -29,6 +28,8 @@ export default function makePostsDb({ postModel }) {
 
     async function update(id, { ...newData }) {
         const query = { _id: id }
-        return await postModel.findOneAndUpdate(query, { ...newData })
+        return await postModel.findOneAndUpdate(query, { ...newData }, {
+            returnOriginal: false
+        })
     }
 }

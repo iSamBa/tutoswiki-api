@@ -1,10 +1,10 @@
-export default function makeListPostsController({ listPostsUseCase }) {
-    return async function listPosts(httpRequest) {
+export default function makeListPostsController({ listPosts }) {
+    return async function listPostsController(httpRequest) {
         const headers = {
             'Content-Type': 'application/json'
         }
         try {
-            const posts = await listPostsUseCase(httpRequest.body);
+            const posts = await listPosts();
             return {
                 headers,
                 statusCode: 201,

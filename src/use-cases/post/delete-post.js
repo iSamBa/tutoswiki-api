@@ -3,6 +3,6 @@ export default function makeDeletePost({ postsDb }) {
         if (!id) {
             throw new Error('You must supply an id.')
         }
-        return await postsDb.remove(id);
+        return postsDb.remove(id);
     }
 }

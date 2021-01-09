@@ -1,14 +1,14 @@
-export default function makeGetPostController({ getPost }) {
-    return async function getPostController(httpRequest) {
+export default function makeListUsersController({ listUsers }) {
+    return async function listUsersController(httpRequest) {
         const headers = {
             'Content-Type': 'application/json'
         }
         try {
-            const retrieved = await getPost(httpRequest.params.id);
+            const Users = await listUsers(httpRequest.body);
             return {
                 headers,
-                statusCode: 200,
-                body: { retrieved }
+                statusCode: 201,
+                body: { Users }
             }
 
         } catch (error) {

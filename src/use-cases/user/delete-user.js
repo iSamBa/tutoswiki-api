@@ -3,6 +3,6 @@ export default function makeDeleteUser({ usersDb }) {
         if (!id) {
             throw new Error('You must supply an id.')
         }
-        return await usersDb.remove(id);
+        return usersDb.remove(id);
     }
 }

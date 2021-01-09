@@ -1,14 +1,14 @@
-export default function makeGetPostController({ getPost }) {
-    return async function getPostController(httpRequest) {
+export default function makeDeleteUserController({ deleteUser }) {
+    return async function deleteUserController(httpRequest) {
         const headers = {
-            'Content-Type': 'application/json'
+            "Content-Type": "application/json"
         }
         try {
-            const retrieved = await getPost(httpRequest.params.id);
+            const deleted = await deleteUser(httpRequest.params.id);
             return {
                 headers,
-                statusCode: 200,
-                body: { retrieved }
+                statusCode: deleted.deletedCount === 0 ? 404 : 200,
+                body: { deleted }
             }
 
         } catch (error) {
