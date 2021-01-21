@@ -2,8 +2,8 @@ import mongoose from 'mongoose';
 import dotenv from "dotenv";
 import makePostsDb from "./posts/posts-db.js"
 import makeUsersDb from "./users/users-db.js"
-import postSchema from "./schema/post.js"
-import userSchema from "./schema/user.js"
+import postModel from "./models/post.js"
+import userModel from "./models/user.js"
 
 dotenv.config();
 
@@ -17,9 +17,6 @@ mongoose.set("useCreateIndex", true);
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', () => { console.log("Connected to the DB"); });
-
-const postModel = mongoose.model("post", postSchema);
-const userModel = mongoose.model("user", userSchema);
 
 const postsDb = makePostsDb({ postModel });
 const usersDb = makeUsersDb({ userModel })

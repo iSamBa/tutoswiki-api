@@ -9,5 +9,6 @@ const postSchema = new mongoose.Schema({
     updatedAt: Date,
     published: Boolean,
 });
+const postModel = mongoose.model("post", postSchema);
 
-export default postSchema;
+export default postModel;
