@@ -4,12 +4,12 @@ export default function makeUsersDb({ userModel }) {
         findById,
         insert,
         remove,
-        update
+        update,
+        register
     })
 
     async function insert(userInfo) {
         const userInstance = new userModel(userInfo);
-        console.log(userInfo);
         return await userInstance.save();
     }
 
@@ -32,5 +32,15 @@ export default function makeUsersDb({ userModel }) {
         return await userModel.findOneAndUpdate(query, { ...newData }, {
             returnOriginal: false
         })
+    }
+
+    async function register(userInfo){
+        const userInstance = new userModel(userInfo);
+        return await userModel.register(userInstance, userInstance.password,(err)=>{
+            if(err) {
+                console.log(err);
+            }
+        });
+
     }
 }

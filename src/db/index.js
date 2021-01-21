@@ -1,9 +1,9 @@
 import mongoose from 'mongoose';
-import dotenv from "dotenv";
-import makePostsDb from "./posts/posts-db.js"
-import makeUsersDb from "./users/users-db.js"
-import postModel from "./models/post.js"
-import userModel from "./models/user.js"
+import dotenv from 'dotenv';
+import makePostsDb from './posts/posts-db.js';
+import makeUsersDb from './users/users-db.js';
+import postModel from './models/post.js';
+import userModel from './models/user.js';
 
 dotenv.config();
 
