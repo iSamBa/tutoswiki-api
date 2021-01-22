@@ -4,7 +4,7 @@ import usersController from "../controllers/user/index.js"
 import makeExpressCallback from "../helpers/express-callback.js"
 import usersService from "../use-cases/user/index.js";
 
-const { addUserController, deleteUserController, updateUserController, listUsersController, getUserController } = usersController;
+const { addUserController, deleteUserController, updateUserController, listUsersController, getUserController, registerUserController } = usersController;
 
 const usersRouter = express.Router();
 
@@ -16,7 +16,6 @@ usersRouter.post("/", makeExpressCallback(addUserController));
 usersRouter.get("/:id", makeExpressCallback(getUserController))
 usersRouter.delete("/:id", makeExpressCallback(deleteUserController))
 usersRouter.patch("/:id", makeExpressCallback(updateUserController))
-usersRouter.post("/register", (req, res) => {
-    usersService.registerUser(req.body).then(()=> res.send("registerd")).catch((err)=> res.send(err))
-})
+usersRouter.post("/register", makeExpressCallback(registerUserController))
+
 export default usersRouter;

@@ -7,7 +7,7 @@ import userModel from './models/user.js';
 
 dotenv.config();
 
-mongoose.connect(process.env.LOCAL_DATA_BASE_URL, {
+mongoose.connect(process.env.DATA_BASE_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false,
