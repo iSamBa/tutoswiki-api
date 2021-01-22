@@ -12,7 +12,7 @@ export default function makeUpdateUserController({ updateUser }) {
             }
 
         } catch (error) {
-            console.log(error);
+            console.log(error.message);
             return {
                 headers,
                 statusCode: 400,

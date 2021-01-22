@@ -35,7 +35,8 @@ export default function makeUsersDb({ userModel }) {
     }
 
     async function register(userInfo){
+        const {password, ...userData} = userInfo;
         const userInstance = new userModel(userInfo);
-        return await userModel.register(userInstance, userInstance.password);
+        return await userModel.register(userInstance, password);
     }
 }
