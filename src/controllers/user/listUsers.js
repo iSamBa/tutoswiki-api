@@ -12,7 +12,7 @@ export default function makeListUsersController({ listUsers }) {
             }
 
         } catch (error) {
-            console.log(error);
+            console.log(error.message);
             return {
                 headers,
                 statusCode: 400,

@@ -12,7 +12,7 @@ export default function makeCreateUserController({ addUser }) {
             }
 
         } catch (error) {
-            console.log(error);
+            console.log(error.message);
             return {
                 headers,
                 statusCode: 400,
