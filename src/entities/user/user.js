@@ -13,7 +13,7 @@ export default function buildMakeUser({ Id }) {
             throw new Error("Id is not valid");
         }
         if (!username || username.length < 6) {
-            throw new Error("Display name must at least contain 6 characters")
+            throw new Error("Username name must at least contain 6 characters")
         }
         if(!password || password.length < 6) {
             throw new Error("Password must at least contain 6 characters")
