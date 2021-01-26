@@ -1,25 +1,25 @@
 export default function makeGetUserController({ getUser }) {
-    return async function getUserController(httpRequest) {
-        const headers = {
-            'Content-Type': 'application/json'
-        }
-        try {
-            const retrieved = await getUser(httpRequest.params.id);
-            return {
-                headers,
-                statusCode: 200,
-                body: { retrieved }
-            }
-
-        } catch (error) {
-            console.log(error.message);
-            return {
-                headers,
-                statusCode: 400,
-                body: {
-                    error: error.message
-                }
-            }
-        }
+  return async function getUserController(httpRequest) {
+    const headers = {
+      "Content-Type": "application/json",
+    };
+    try {
+      const user = await getUser(httpRequest.params.id);
+      return {
+        headers,
+        statusCode: 200,
+        body: { ok: true, user },
+      };
+    } catch (error) {
+      console.log(error.message);
+      return {
+        headers,
+        statusCode: 400,
+        body: {
+          ok: false,
+          message: error.message,
+        },
+      };
     }
+  };
 }
