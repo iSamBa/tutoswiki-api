@@ -5,9 +5,10 @@ import postsRouter from "./src/routes/posts-routes.js";
 import usersRouter from "./src/routes/users-routes.js";
 import authenticationRouter from "./src/routes/authentication-routes.js";
 import MongoStore from "connect-mongo";
+import isAuthenticated from "./src/auth/middleware/isAuthenticated.js";
 import { connection } from "./src/db/index.js";
 
-import passport from "./src/auth/passport.js";
+import passport from "./src/auth/config/passport.js";
 
 const PORT = process.env.PORT || 3000;
 
@@ -35,8 +36,8 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use("/users", usersRouter);
-app.use("/posts", postsRouter);
+app.use("/users", isAuthenticated, usersRouter);
+app.use("/posts", isAuthenticated, postsRouter);
 app.use("/auth", authenticationRouter);
 
 app.listen(PORT, () => {

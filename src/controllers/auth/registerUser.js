@@ -1,25 +1,21 @@
-export default function makeRegisterUserController({ utils }) {
+import { generatePassword } from "../../auth/helpers/password-utils.js";
+
+export default function makeRegisterUserController({ registerUser }) {
   return async function registerUserController(httpRequest) {
     const headers = {
       "Content-Type": "application/json",
     };
     try {
-      const { registerUser, userModel, passwordGenerator } = utils;
-      const { salt, hash } = passwordGenerator(httpRequest.body.password);
-      const user = await registerUser(httpRequest.body);
-      const { password, ...rest } = user;
-      const newUser = new userModel({
-        ...rest,
-        hash: hash,
-        salt: salt,
-      });
-
-      const registredUser = await newUser.save();
+      const registredUser = await registerUser(
+        httpRequest.body,
+        generatePassword
+      );
 
       return {
         headers,
         statusCode: 201,
         body: {
+          ok: true,
           message: "User was successfully registred",
           user: registredUser._doc,
         },
@@ -28,6 +24,7 @@ export default function makeRegisterUserController({ utils }) {
       console.log(error);
       return {
         headers,
+        ok: false,
         statusCode: 400,
         body: {
           error: error.message,

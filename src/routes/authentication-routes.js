@@ -2,7 +2,7 @@ import express from "express";
 import bodyParser from "body-parser";
 import makeExpressCallback from "../helpers/express-callback.js";
 import registerUserController from "../controllers/auth/index.js";
-import passport from "../auth/passport.js";
+import passport from "../auth/config/passport.js";
 
 const authenticationRouter = express.Router();
 
@@ -16,17 +16,22 @@ authenticationRouter.post(
 authenticationRouter.post(
   "/login",
   passport.authenticate("local"),
-  (req, res) => {
-    res.send("You have been successfully logged in !");
+  (req, res, next) => {
+    res
+      .status(200)
+      .json({ ok: true, message: "User has been successfuly logged in" });
   }
 );
 
-authenticationRouter.get("/", (req, res) => {
-  res.send("You are authenticated");
+authenticationRouter.post("/logout", (req, res, next) => {
+  req.logout();
+  res
+    .status(200)
+    .json({ ok: true, message: "User has been successfuly logged out" });
 });
 
-authenticationRouter.get("/failure", (req, res) => {
-  res.send("You are NOT authenticated");
+authenticationRouter.use((error, req, res, next) => {
+  return res.status(401).json({ ok: false, message: error.toString() });
 });
 
 export default authenticationRouter;
