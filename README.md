@@ -14,11 +14,10 @@ In order to publish or read these tutorials, a user must be authenticated.<br>
   + [Passportjs](http://www.passportjs.org/)
 
 
-
 ### Get it running locally
 1. Make sure to have a running instance of Mongodb (Either locally or on the cloud using Mongodb Atlas)
-2. Clone the current repository ```git clone https://github.com/iSamBa/tutoswiki-api.git```
-3. In the root folder create a ```.env``` file in which you need to specify the url to your data base ```DATA_BASE_URL=<url to your data base>``` 
-4. Open a terminal in the root folder of this project and run ```npm install``` to install all the dependencies
-5. Start the server with ```npm start```
+2. Clone the current repository `git clone https://github.com/iSamBa/tutoswiki-api.git`
+3. In the root folder create a `.env` file in which you need to specify the url to your data base `DATA_BASE_URL=<url to your data base>` 
+4. Open a terminal in the root folder of this project and run `npm install` to install all the dependencies
+5. Start the server with `npm start`
 
