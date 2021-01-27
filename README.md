@@ -2,12 +2,14 @@
 ---
 
 ### Introduction
-Tutorials wiki api is an api that will allow users to create blogs alike tutorials in serveral topics.<br>
+Tutorials wiki api is an api that will allow users to create blogs alike tutorials in serveral topics.<br> The purpose is to have a platform to share quality information among the users.
+
 In order to publish or read these tutorials, a user must be authenticated.<br>
 
 ### Used technologies
-+ The general architecture of this implementation follows the rules of [The Clean Code Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) by Robert C. Martin (Uncle Bob) 
-+ Main Technologies :
++ The general architecture of this implementation follows the rules of [The Clean Code Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) by Robert C. Martin (Uncle Bob), and the purpose is to make a distinction between the core functionalities and the used technologies, which will make the api less independent on these technologies _we can easily change a framework without affecting the main functions_
+
++ Main used technologies in this implementation:
   + [Express](http://expressjs.com/)
   + [MongoDB Atlas](https://www.mongodb.com/cloud)
   + [Mongoose](https://mongoosejs.com/)
@@ -40,8 +42,9 @@ Besides the `status`, the body of all responses sent by the API are structured i
 
 
 ## ToDos
-[] The possibility to create an Admin user
-[] Restrict the access to `/users` route to Admins only
-[] Implement automatic testing
+- [ ] The possibility to create an Admin user
+- [ ] Restrict the access to `/users` route to Admins only
+- [ ] Implement automatic testing
+- [ ] Create a docker image of this api
 
 
