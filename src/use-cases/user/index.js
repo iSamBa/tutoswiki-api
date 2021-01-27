@@ -17,7 +17,7 @@ const usersService = Object.freeze({
     deleteUser,
     updateUser,
     listUsers,
-    getUser
+    getUser,
 
 });
 
@@ -28,5 +28,5 @@ export {
     deleteUser,
     updateUser,
     listUsers,
-    getUser
+    getUser,
 }

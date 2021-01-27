@@ -1,52 +1,52 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 import dotenv from "dotenv";
-import makePostsDb from "./posts/posts-db.js"
-import makeUsersDb from "./users/users-db.js"
+import makePostsDb from "./posts/posts-db.js";
+import makeUsersDb from "./users/users-db.js";
 
 dotenv.config();
 
-mongoose.connect(process.env.LOCAL_DATA_BASE_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useFindAndModify: false,
+const connection = mongoose.createConnection(process.env.DATA_BASE_URL, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useFindAndModify: false,
 });
-
-const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', () => { console.log("Connected to the DB"); });
+mongoose.set("useCreateIndex", true);
 
 const postSchema = new mongoose.Schema({
-    _id: String,
-    author_id: String,
-    title: String,
-    content: String,
-    createdAt: Date,
-    updatedAt: Date,
-    published: Boolean,
+  _id: String,
+  author_id: String,
+  title: String,
+  content: String,
+  createdAt: Date,
+  updatedAt: Date,
+  published: Boolean,
 });
-
+const postModel = connection.model("post", postSchema);
 
 const userSchema = new mongoose.Schema({
-    _id: String,
-    userName: String,
-    firstName: String,
-    lastName: String,
-    email: String,
-    createdAt: Date,
-    updatedAt: Date
+  _id: String,
+  userName: String,
+  firstName: String,
+  lastName: String,
+  email: String,
+  createdAt: Date,
+  updatedAt: Date,
+  hash: String,
+  salt: String,
+});
 
-})
-
-const postModel = mongoose.model("post", postSchema);
-const userModel = mongoose.model("user", userSchema);
+const userModel = connection.model("user", userSchema);
 
 const postsDb = makePostsDb({ postModel });
-const usersDb = makeUsersDb({ userModel })
+const usersDb = makeUsersDb({ userModel });
 
 const dbService = Object.freeze({
-    postsDb,
-    usersDb
-})
+  connection,
+  userModel,
+  postModel,
+  postsDb,
+  usersDb,
+});
 
-export { postsDb, usersDb };
+export { connection, postsDb, usersDb, userModel, postModel };
 export default dbService;

@@ -1,17 +1,45 @@
 import express from "express";
+import session from "express-session";
 import cors from "cors";
-import postsRouter from "./src/routes/posts-routes.js"
-import usersRouter from "./src/routes/users-routes.js"
+import postsRouter from "./src/routes/posts-routes.js";
+import usersRouter from "./src/routes/users-routes.js";
+import authenticationRouter from "./src/routes/authentication-routes.js";
+import MongoStore from "connect-mongo";
+import isAuthenticated from "./src/auth/middleware/isAuthenticated.js";
+import { connection } from "./src/db/index.js";
+
+import passport from "./src/auth/config/passport.js";
 
 const PORT = process.env.PORT || 3000;
 
 const app = express();
 app.use(cors());
 
-app.use('/users', usersRouter)
-app.use('/posts', postsRouter)
-
-app.listen(PORT, () => {
-    console.log(`Server started listening on port ${PORT}`);
+const mongoStore = MongoStore(session);
+const sessionStore = new mongoStore({
+  mongooseConnection: connection,
+  collection: "sessions",
 });
 
+app.use(
+  session({
+    secret: process.env.SECRET,
+    resave: false,
+    saveUninitialized: true,
+    store: sessionStore,
+    cookie: {
+      maxAge: 24 * 60 * 60 * 1000,
+    },
+  })
+);
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use("/users", isAuthenticated, usersRouter);
+app.use("/posts", isAuthenticated, postsRouter);
+app.use("/auth", authenticationRouter);
+
+app.listen(PORT, () => {
+  console.log(`Server started listening on port ${PORT}`);
+});
