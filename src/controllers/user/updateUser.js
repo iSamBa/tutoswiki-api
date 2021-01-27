@@ -19,7 +19,6 @@ export default function makeUpdateUserController({ updateUser }) {
             : { ok: true, updatedUser },
       };
     } catch (error) {
-      console.log(error.message);
       return {
         headers,
         statusCode: 400,

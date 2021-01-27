@@ -14,7 +14,6 @@ export default function makeDeletePostController({ deletePost }) {
             : { ok: true, deletedPost },
       };
     } catch (error) {
-      console.log(error);
       return {
         headers,
         statusCode: 400,

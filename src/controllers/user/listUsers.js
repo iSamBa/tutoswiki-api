@@ -11,7 +11,6 @@ export default function makeListUsersController({ listUsers }) {
         body: { ok: true, users },
       };
     } catch (error) {
-      console.log(error.message);
       return {
         headers,
         statusCode: 400,

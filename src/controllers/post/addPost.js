@@ -11,7 +11,6 @@ export default function makeAddPostController({ addPost }) {
         body: { ok: true, addedPost },
       };
     } catch (error) {
-      console.log(error);
       return {
         headers,
         statusCode: 400,

@@ -17,7 +17,6 @@ export default function makeUpdatePostController({ updatePost }) {
             : { ok: true, updatedPost },
       };
     } catch (error) {
-      console.log(error);
       return {
         headers,
         statusCode: 400,

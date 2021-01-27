@@ -11,7 +11,6 @@ export default function makeGetUserController({ getUser }) {
         body: { ok: true, user },
       };
     } catch (error) {
-      console.log(error.message);
       return {
         headers,
         statusCode: 400,

@@ -11,7 +11,6 @@ export default function makeGetPostController({ getPost }) {
         body: { ok: true, post },
       };
     } catch (error) {
-      console.log(error);
       return {
         headers,
         statusCode: 400,

@@ -11,7 +11,6 @@ export default function makeListPostsController({ listPosts }) {
         body: { ok: true, posts },
       };
     } catch (error) {
-      console.log(error);
       return {
         headers,
         statusCode: 400,

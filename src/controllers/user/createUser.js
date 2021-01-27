@@ -11,7 +11,6 @@ export default function makeCreateUserController({ addUser }) {
         body: { ok: true, addedUser },
       };
     } catch (error) {
-      console.log(error.message);
       return {
         headers,
         statusCode: 400,

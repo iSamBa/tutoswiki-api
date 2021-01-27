@@ -14,7 +14,6 @@ export default function makeDeleteUserController({ deleteUser }) {
             : { ok: true, deletedUser },
       };
     } catch (error) {
-      console.log(error.message);
       return {
         headers,
         statusCode: 400,

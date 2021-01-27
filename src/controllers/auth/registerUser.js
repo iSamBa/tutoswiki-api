@@ -16,18 +16,17 @@ export default function makeRegisterUserController({ registerUser }) {
         statusCode: 201,
         body: {
           ok: true,
-          message: "User was successfully registred",
-          user: registredUser._doc,
+          registredUser,
         },
       };
     } catch (error) {
-      console.log(error);
       return {
         headers,
         ok: false,
         statusCode: 400,
         body: {
-          error: error.message,
+          ok: false,
+          message: error.message,
         },
       };
     }
