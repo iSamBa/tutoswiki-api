@@ -4,17 +4,17 @@ export default function makeUpdatePostController({ updatePost }) {
       "Content-Type": "application/json",
     };
     try {
-      const updatedPost = await updatePost({
+      const data = await updatePost({
         id: httpRequest.params.id,
         ...httpRequest.body,
       });
       return {
         headers,
-        statusCode: updatedPost.updatedCount === 0 ? 404 : 200,
+        statusCode: data.updatedCount === 0 ? 404 : 200,
         body:
-          updatedPost.updatedCount === 0
+          data.updatedCount === 0
             ? { ok: false, message: "Post to update was not found" }
-            : { ok: true, updatedPost },
+            : { ok: true, data },
       };
     } catch (error) {
       return {

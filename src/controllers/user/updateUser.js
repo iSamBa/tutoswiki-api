@@ -6,17 +6,17 @@ export default function makeUpdateUserController({ updateUser }) {
       "Content-Type": "application/json",
     };
     try {
-      const updatedUser = await updateUser({
+      const data = await updateUser({
         id: httpRequest.params.id,
         ...httpRequest.body,
       });
       return {
         headers,
-        statusCode: updatedUser.updatedCount === 0 ? 404 : 200,
+        statusCode: data.updatedCount === 0 ? 404 : 200,
         body:
-          updatedUser.updatedCount === 0
+          data.updatedCount === 0
             ? { ok: false, message: "User to update was not found" }
-            : { ok: true, updatedUser },
+            : { ok: true, data },
       };
     } catch (error) {
       return {

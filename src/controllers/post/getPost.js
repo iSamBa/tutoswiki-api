@@ -4,11 +4,11 @@ export default function makeGetPostController({ getPost }) {
       "Content-Type": "application/json",
     };
     try {
-      const post = await getPost(httpRequest.params.id);
+      const data = await getPost(httpRequest.params.id);
       return {
         headers,
         statusCode: 200,
-        body: { ok: true, post },
+        body: { ok: true, data },
       };
     } catch (error) {
       return {

@@ -6,17 +6,14 @@ export default function makeRegisterUserController({ registerUser }) {
       "Content-Type": "application/json",
     };
     try {
-      const registredUser = await registerUser(
-        httpRequest.body,
-        generatePassword
-      );
+      const data = await registerUser(httpRequest.body, generatePassword);
 
       return {
         headers,
         statusCode: 201,
         body: {
           ok: true,
-          registredUser,
+          data,
         },
       };
     } catch (error) {

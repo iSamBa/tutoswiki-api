@@ -4,11 +4,11 @@ export default function makeGetUserController({ getUser }) {
       "Content-Type": "application/json",
     };
     try {
-      const user = await getUser(httpRequest.params.id);
+      const data = await getUser(httpRequest.params.id);
       return {
         headers,
         statusCode: 200,
-        body: { ok: true, user },
+        body: { ok: true, data },
       };
     } catch (error) {
       return {

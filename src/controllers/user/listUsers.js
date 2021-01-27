@@ -4,11 +4,11 @@ export default function makeListUsersController({ listUsers }) {
       "Content-Type": "application/json",
     };
     try {
-      const users = await listUsers(httpRequest.body);
+      const data = await listUsers(httpRequest.body);
       return {
         headers,
         statusCode: 201,
-        body: { ok: true, users },
+        body: { ok: true, data },
       };
     } catch (error) {
       return {

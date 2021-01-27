@@ -4,14 +4,14 @@ export default function makeDeleteUserController({ deleteUser }) {
       "Content-Type": "application/json",
     };
     try {
-      const deletedUser = await deleteUser(httpRequest.params.id);
+      const data = await deleteUser(httpRequest.params.id);
       return {
         headers,
-        statusCode: deletedUser.deletedCount === 0 ? 404 : 200,
+        statusCode: data.deletedCount === 0 ? 404 : 200,
         body:
-          deletedUser.deletedCount === 0
+          data.deletedCount === 0
             ? { ok: false, message: "User to delete was not found" }
-            : { ok: true, deletedUser },
+            : { ok: true, data },
       };
     } catch (error) {
       return {

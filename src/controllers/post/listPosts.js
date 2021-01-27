@@ -4,11 +4,11 @@ export default function makeListPostsController({ listPosts }) {
       "Content-Type": "application/json",
     };
     try {
-      const posts = await listPosts();
+      const data = await listPosts();
       return {
         headers,
         statusCode: 201,
-        body: { ok: true, posts },
+        body: { ok: true, data },
       };
     } catch (error) {
       return {

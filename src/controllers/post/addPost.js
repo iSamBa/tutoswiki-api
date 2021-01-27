@@ -4,11 +4,11 @@ export default function makeAddPostController({ addPost }) {
       "Content-Type": "application/json",
     };
     try {
-      const addedPost = await addPost(httpRequest.body);
+      const data = await addPost(httpRequest.body);
       return {
         headers,
         statusCode: 201,
-        body: { ok: true, addedPost },
+        body: { ok: true, data },
       };
     } catch (error) {
       return {

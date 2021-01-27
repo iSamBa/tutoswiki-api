@@ -21,3 +21,27 @@ In order to publish or read these tutorials, a user must be authenticated.<br>
 4. Open a terminal in the root folder of this project and run `npm install` to install all the dependencies
 5. Start the server with `npm start`
 
+
+### Routes
+The API contains 3 main routes:
++ `/users` : Accessible by authenticated users only, and contains CRUD operations for the user entity
++ `/posts` : Accessible by authenticated users only, and contains CRUD operations for the post entity
++ `/auth` : User authentication, used for the `/login`, `/register` and `/logout`
+  
+
+## Authentication strategy
+The authentication has been implemented using [Passportjs](http://www.passportjs.org/), especially the _Passport-local_ strategy.
+The password given by the user is hashed with a generated salt using [crypto](https://github.com/brix/crypto-js).
+After login in, a session with the user information is stored in the data base in the `sessions` collection, and a cookie is generated for that specific user and will be added to the headers.
+
+
+## API response
+Besides the `status`, the body of all responses sent by the API are structured in the following way : `{ok: true, data}` or `{ok: false, message}` 
+
+
+## ToDos
+[] The possibility to create an Admin user
+[] Restrict the access to `/users` route to Admins only
+[] Implement automatic testing
+
+
