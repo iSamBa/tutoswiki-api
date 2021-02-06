@@ -31,6 +31,7 @@ const userSchema = new mongoose.Schema({
   email: String,
   createdAt: Date,
   updatedAt: Date,
+  isAdmin: Boolean,
   hash: String,
   salt: String,
 });

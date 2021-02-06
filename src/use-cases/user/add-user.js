@@ -11,6 +11,7 @@ export default function makeAddUser({ usersDb }) {
       email: user.getEmail(),
       createdAt: user.getUserCreatedAt(),
       updatedAt: user.getUserUpdatedAt(),
+      isAdmin: user.isAdmin(),
     });
   };
 }

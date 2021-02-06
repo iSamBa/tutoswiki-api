@@ -7,6 +7,7 @@ export default function buildMakeUser({ Id }) {
     lastName,
     username,
     email,
+    admin = false,
   } = {}) {
     if (!Id.isValid(id)) {
       throw new Error("Id is not valid");
@@ -22,6 +23,7 @@ export default function buildMakeUser({ Id }) {
       getLastName: () => lastName,
       getUserName: () => username,
       getEmail: () => email,
+      isAdmin: () => admin,
     });
   };
 }
