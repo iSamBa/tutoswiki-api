@@ -42,8 +42,8 @@ Besides the `status`, the body of all responses sent by the API are structured i
 
 
 ## ToDos
-- [ ] The possibility to create an Admin user
-- [ ] Restrict the access to `/users` route to Admins only
+- [x] The possibility to create an Admin user
+- [x] Restrict the access to `/users` route to Admins only
 - [ ] Implement automatic testing
 - [ ] Deploy to Heroku
 - [ ] Create a docker image of this api
