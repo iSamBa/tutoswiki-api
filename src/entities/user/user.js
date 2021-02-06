@@ -5,14 +5,14 @@ export default function buildMakeUser({ Id }) {
     updatedAt = Date.now(),
     firstName,
     lastName,
-    username,
+    userName,
     email,
     admin = false,
   } = {}) {
     if (!Id.isValid(id)) {
       throw new Error("Id is not valid");
     }
-    if (!username || username.length < 6) {
+    if (!userName || userName.length < 6) {
       throw new Error("Username name must at least contain 6 characters");
     }
     return Object.freeze({
@@ -21,7 +21,7 @@ export default function buildMakeUser({ Id }) {
       getUserUpdatedAt: () => updatedAt,
       getFirstName: () => firstName,
       getLastName: () => lastName,
-      getUserName: () => username,
+      getUserName: () => userName,
       getEmail: () => email,
       isAdmin: () => admin,
     });

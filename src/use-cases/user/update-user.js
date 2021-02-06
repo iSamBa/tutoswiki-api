@@ -20,6 +20,7 @@ export default function makeUpdateUser({ usersDb }) {
       userName: newUser.getUserName(),
       email: newUser.getEmail(),
       updatedAt: Date.now(),
+      isAdmin: newUser.isAdmin(),
     });
   };
 }

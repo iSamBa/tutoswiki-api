@@ -6,6 +6,7 @@ import usersRouter from "./src/routes/users-routes.js";
 import authenticationRouter from "./src/routes/authentication-routes.js";
 import MongoStore from "connect-mongo";
 import isAuthenticated from "./src/auth/middleware/isAuthenticated.js";
+import isAdmin from "./src/auth/middleware/isAdmin.js";
 import { connection } from "./src/db/index.js";
 
 import passport from "./src/auth/config/passport.js";
@@ -36,7 +37,7 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use("/users", isAuthenticated, usersRouter);
+app.use("/users", isAdmin, usersRouter);
 app.use("/posts", isAuthenticated, postsRouter);
 app.use("/auth", authenticationRouter);
 
