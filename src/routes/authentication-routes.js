@@ -17,6 +17,7 @@ authenticationRouter.post(
   "/login",
   passport.authenticate("local"),
   (req, res, next) => {
+    console.log(req);
     res
       .status(200)
       .json({ ok: true, message: "User has been successfuly logged in" });

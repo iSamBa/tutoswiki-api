@@ -12,7 +12,6 @@ export default function makeRegisterUser({ userModel }) {
       throw new Error("A user with the same username already exists");
     }
     const user = makeUser(userInformation);
-    console.log(user.getFirstName());
     const { salt, hash } = passwordGenerator(userInformation.password);
     const userInstance = new userModel({
       _id: user.getUserId(),

@@ -1,6 +1,7 @@
 import express from "express";
 import session from "express-session";
 import cors from "cors";
+import morgan from "morgan";
 import postsRouter from "./src/routes/posts-routes.js";
 import usersRouter from "./src/routes/users-routes.js";
 import authenticationRouter from "./src/routes/authentication-routes.js";
@@ -14,8 +15,12 @@ import passport from "./src/auth/config/passport.js";
 const PORT = process.env.PORT || 3000;
 
 const app = express();
-app.use(cors());
-
+app.use(
+  cors({
+    origin: "http://localhost:8080",
+    credentials: true,
+  })
+);
 const mongoStore = MongoStore(session);
 const sessionStore = new mongoStore({
   mongooseConnection: connection,
