@@ -1,7 +1,6 @@
 import express from "express";
 import session from "express-session";
 import cors from "cors";
-import morgan from "morgan";
 import postsRouter from "./src/routes/posts-routes.js";
 import usersRouter from "./src/routes/users-routes.js";
 import authenticationRouter from "./src/routes/authentication-routes.js";
@@ -9,7 +8,6 @@ import MongoStore from "connect-mongo";
 import isAuthenticated from "./src/auth/middleware/isAuthenticated.js";
 import isAdmin from "./src/auth/middleware/isAdmin.js";
 import { connection } from "./src/db/index.js";
-
 import passport from "./src/auth/config/passport.js";
 
 const PORT = process.env.PORT || 3000;
