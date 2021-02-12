@@ -7,7 +7,6 @@ export default function makeRegisterUserController({ registerUser }) {
     };
     try {
       const data = await registerUser(httpRequest.body, generatePassword);
-
       return {
         headers,
         statusCode: 201,

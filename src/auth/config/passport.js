@@ -30,7 +30,7 @@ passport.serializeUser(function (user, done) {
 
 passport.deserializeUser(function (id, done) {
   userModel.findById(id, function (err, user) {
-    done(err, user);
+    done(err, { username: user.userName, isAdmin: user.isAdmin });
   });
 });
 
