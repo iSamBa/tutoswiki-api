@@ -22,8 +22,6 @@ authenticationRouter.post(
       message: "User has been successfuly logged in",
       data: {
         username: req.user.userName,
-        firstName: res.user?.firstName,
-        lastName: req.user?.lastName,
         isAdmin: req.user.isAdmin,
       },
     });
@@ -37,8 +35,6 @@ authenticationRouter.get("/", (req, res) => {
       message: "User is already logged in",
       data: {
         username: req.user.userName,
-        firstName: res.user?.firstName,
-        lastName: req.user?.lastName,
         isAdmin: req.user.isAdmin,
       },
     });
